@@ -1,0 +1,228 @@
+[2025-05-27 06:02:09] local.ERROR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'after `email`, `phone_number` varchar(255) null, `remember_token` varchar(100) n' at line 1 (Connection: mysql, SQL: create table `users` (`id` bigint unsigned not null auto_increment primary key, `name` varchar(255) not null, `email` varchar(255) not null, `password` varchar(255) not null, `nik` varchar(255) not null after `email`, `phone_number` varchar(255) null, `remember_token` varchar(100) null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8mb4 collate 'utf8mb4_unicode_ci') {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42000): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'after `email`, `phone_number` varchar(255) null, `remember_token` varchar(100) n' at line 1 (Connection: mysql, SQL: create table `users` (`id` bigint unsigned not null auto_increment primary key, `name` varchar(255) not null, `email` varchar(255) not null, `password` varchar(255) not null, `nik` varchar(255) not null after `email`, `phone_number` varchar(255) null, `remember_token` varchar(100) null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8mb4 collate 'utf8mb4_unicode_ci') at /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:829)
+[stacktrace]
+#0 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(783): Illuminate\\Database\\Connection->runQueryCallback('create table `u...', Array, Object(Closure))
+#1 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(576): Illuminate\\Database\\Connection->run('create table `u...', Array, Object(Closure))
+#2 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(110): Illuminate\\Database\\Connection->statement('create table `u...')
+#3 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(602): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\MySqlConnection), Object(Illuminate\\Database\\Schema\\Grammars\\MySqlGrammar))
+#4 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(456): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#5 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(355): Illuminate\\Database\\Schema\\Builder->create('users', Object(Closure))
+#6 /Users/m/Documents/GitHub/Web-Absensi/backend/database/migrations/2014_10_12_000000_create_users_table.php(14): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#7 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(501): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#8 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(418): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\MySqlConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#9 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(427): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#10 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(224): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(37): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(783): Illuminate\\Console\\View\\Components\\Task->render('2014_10_12_0000...', Object(Closure))
+#13 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(224): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2014_10_12_0000...', Object(Closure))
+#14 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(189): Illuminate\\Database\\Migrations\\Migrator->runUp('/Users/m/Docume...', 1, false)
+#15 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(132): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#16 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#17 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(641): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#18 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(83): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#19 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#20 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#21 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#22 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#23 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#24 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call(Array)
+#25 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Command/Command.php(326): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#26 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#27 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(1096): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 /Users/m/Documents/GitHub/Web-Absensi/backend/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 {main}
+
+[previous exception] [object] (PDOException(code: 42000): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'after `email`, `phone_number` varchar(255) null, `remember_token` varchar(100) n' at line 1 at /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:581)
+[stacktrace]
+#0 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(581): PDO->prepare('create table `u...')
+#1 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(816): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('create table `u...', Array)
+#2 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(783): Illuminate\\Database\\Connection->runQueryCallback('create table `u...', Array, Object(Closure))
+#3 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(576): Illuminate\\Database\\Connection->run('create table `u...', Array, Object(Closure))
+#4 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(110): Illuminate\\Database\\Connection->statement('create table `u...')
+#5 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(602): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\MySqlConnection), Object(Illuminate\\Database\\Schema\\Grammars\\MySqlGrammar))
+#6 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(456): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#7 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(355): Illuminate\\Database\\Schema\\Builder->create('users', Object(Closure))
+#8 /Users/m/Documents/GitHub/Web-Absensi/backend/database/migrations/2014_10_12_000000_create_users_table.php(14): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#9 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(501): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#10 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(418): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\MySqlConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(427): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(224): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#13 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(37): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#14 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(783): Illuminate\\Console\\View\\Components\\Task->render('2014_10_12_0000...', Object(Closure))
+#15 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(224): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2014_10_12_0000...', Object(Closure))
+#16 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(189): Illuminate\\Database\\Migrations\\Migrator->runUp('/Users/m/Docume...', 1, false)
+#17 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(132): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#18 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#19 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(641): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#20 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(83): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#21 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#22 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#25 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#26 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call(Array)
+#27 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Command/Command.php(326): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#28 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#29 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(1096): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 /Users/m/Documents/GitHub/Web-Absensi/backend/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#34 {main}
+"} 
+[2025-05-27 06:02:32] local.ERROR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'after `email`, `phone_number` varchar(255) null, `remember_token` varchar(100) n' at line 1 (Connection: mysql, SQL: create table `users` (`id` bigint unsigned not null auto_increment primary key, `name` varchar(255) not null, `email` varchar(255) not null, `password` varchar(255) not null, `nik` varchar(255) not null after `email`, `phone_number` varchar(255) null, `remember_token` varchar(100) null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8mb4 collate 'utf8mb4_unicode_ci') {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42000): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'after `email`, `phone_number` varchar(255) null, `remember_token` varchar(100) n' at line 1 (Connection: mysql, SQL: create table `users` (`id` bigint unsigned not null auto_increment primary key, `name` varchar(255) not null, `email` varchar(255) not null, `password` varchar(255) not null, `nik` varchar(255) not null after `email`, `phone_number` varchar(255) null, `remember_token` varchar(100) null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8mb4 collate 'utf8mb4_unicode_ci') at /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:829)
+[stacktrace]
+#0 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(783): Illuminate\\Database\\Connection->runQueryCallback('create table `u...', Array, Object(Closure))
+#1 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(576): Illuminate\\Database\\Connection->run('create table `u...', Array, Object(Closure))
+#2 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(110): Illuminate\\Database\\Connection->statement('create table `u...')
+#3 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(602): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\MySqlConnection), Object(Illuminate\\Database\\Schema\\Grammars\\MySqlGrammar))
+#4 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(456): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#5 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(355): Illuminate\\Database\\Schema\\Builder->create('users', Object(Closure))
+#6 /Users/m/Documents/GitHub/Web-Absensi/backend/database/migrations/2014_10_12_000000_create_users_table.php(14): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#7 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(501): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#8 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(418): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\MySqlConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#9 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(427): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#10 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(224): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(37): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(783): Illuminate\\Console\\View\\Components\\Task->render('2014_10_12_0000...', Object(Closure))
+#13 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(224): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2014_10_12_0000...', Object(Closure))
+#14 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(189): Illuminate\\Database\\Migrations\\Migrator->runUp('/Users/m/Docume...', 1, false)
+#15 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(132): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#16 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#17 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(641): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#18 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(83): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#19 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#20 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#21 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#22 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#23 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#24 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call(Array)
+#25 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Command/Command.php(326): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#26 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#27 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(67): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#28 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(28): Illuminate\\Console\\Command->runCommand('migrate', Array, Object(Illuminate\\Console\\OutputStyle))
+#29 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(53): Illuminate\\Console\\Command->call('migrate', Array)
+#30 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#31 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#32 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#33 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#34 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#35 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call(Array)
+#36 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Command/Command.php(326): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#37 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#38 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(1096): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#39 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#40 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#41 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#42 /Users/m/Documents/GitHub/Web-Absensi/backend/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#43 {main}
+
+[previous exception] [object] (PDOException(code: 42000): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'after `email`, `phone_number` varchar(255) null, `remember_token` varchar(100) n' at line 1 at /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php:581)
+[stacktrace]
+#0 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(581): PDO->prepare('create table `u...')
+#1 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(816): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('create table `u...', Array)
+#2 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(783): Illuminate\\Database\\Connection->runQueryCallback('create table `u...', Array, Object(Closure))
+#3 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Connection.php(576): Illuminate\\Database\\Connection->run('create table `u...', Array, Object(Closure))
+#4 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(110): Illuminate\\Database\\Connection->statement('create table `u...')
+#5 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(602): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\MySqlConnection), Object(Illuminate\\Database\\Schema\\Grammars\\MySqlGrammar))
+#6 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(456): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#7 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(355): Illuminate\\Database\\Schema\\Builder->create('users', Object(Closure))
+#8 /Users/m/Documents/GitHub/Web-Absensi/backend/database/migrations/2014_10_12_000000_create_users_table.php(14): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#9 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(501): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#10 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(418): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\MySqlConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(427): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(224): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#13 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(37): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#14 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(783): Illuminate\\Console\\View\\Components\\Task->render('2014_10_12_0000...', Object(Closure))
+#15 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(224): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2014_10_12_0000...', Object(Closure))
+#16 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(189): Illuminate\\Database\\Migrations\\Migrator->runUp('/Users/m/Docume...', 1, false)
+#17 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(132): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#18 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#19 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(641): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#20 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(83): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#21 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#22 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#25 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#26 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call(Array)
+#27 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Command/Command.php(326): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#28 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#29 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(67): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#30 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(28): Illuminate\\Console\\Command->runCommand('migrate', Array, Object(Illuminate\\Console\\OutputStyle))
+#31 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(53): Illuminate\\Console\\Command->call('migrate', Array)
+#32 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#33 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#34 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#35 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#36 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Container/Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#37 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call(Array)
+#38 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Command/Command.php(326): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#39 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#40 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(1096): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#41 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#42 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#43 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#44 /Users/m/Documents/GitHub/Web-Absensi/backend/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#45 {main}
+"} 
+[2025-05-27 06:27:24] local.ERROR: Error dari Python Microservice (register_face):   
+[2025-05-27 06:54:29] local.ERROR: Koneksi ke Python Microservice gagal (register_face): cURL error 7: Failed to connect to 127.0.0.1 port 5000 after 1 ms: Could not connect to server (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://127.0.0.1:5000/register_face  
+[2025-05-27 06:54:36] local.ERROR: Koneksi ke Python Microservice gagal (register_face): cURL error 7: Failed to connect to 127.0.0.1 port 5000 after 0 ms: Could not connect to server (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://127.0.0.1:5000/register_face  
+[2025-05-27 12:27:48] local.ERROR: Error dari Python Microservice (register_face): {
+  "message": "Invalid image data provided."
+}
+  
+[2025-06-02 07:03:43] local.ERROR: Error dari Python Microservice (register_face): <!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+  
+[2025-06-02 07:04:02] local.ERROR: Error dari Python Microservice (register_face): <!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+  
+[2025-06-02 07:06:53] local.ERROR: Error dari Python Microservice (register_face): <!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+  
+[2025-06-02 07:07:52] local.ERROR: Error dari Python Microservice (register_face): <!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+  
+[2025-06-02 07:08:00] local.ERROR: Error dari Python Microservice (register_face): <!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+  
+[2025-06-02 07:12:57] local.ERROR: Error dari Python Microservice (register_face): <!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+  
+[2025-06-03 01:44:00] local.ERROR: The "-s" option does not exist. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): The \"-s\" option does not exist. at /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Input/ArgvInput.php:125)
+[stacktrace]
+#0 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Input/ArgvInput.php(107): Symfony\\Component\\Console\\Input\\ArgvInput->parseShortOptionSet('seed')
+#1 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Input/ArgvInput.php(87): Symfony\\Component\\Console\\Input\\ArgvInput->parseShortOption('-seed')
+#2 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Input/ArgvInput.php(74): Symfony\\Component\\Console\\Input\\ArgvInput->parseToken('-seed', true)
+#3 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Input/Input.php(56): Symfony\\Component\\Console\\Input\\ArgvInput->parse()
+#4 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Command/Command.php(285): Symfony\\Component\\Console\\Input\\Input->bind(Object(Symfony\\Component\\Console\\Input\\InputDefinition))
+#5 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#6 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(1096): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#9 /Users/m/Documents/GitHub/Web-Absensi/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#10 /Users/m/Documents/GitHub/Web-Absensi/backend/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#11 {main}
+"} 
