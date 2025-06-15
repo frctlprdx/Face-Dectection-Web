@@ -1,7 +1,7 @@
 // src/pages/RecognizePage.tsx
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react'; // Tambahkan useCallback
 import MessageDisplay from '../components/MessageDisplay';
-import WebcamCaptureModal from '../components/WebcamCaptureModal'; // Import modal baru
+import WebcamCaptureModal from '../components/WebcamCaptureModal'; // Pastikan path ini benar
 
 interface Message {
   text: string;
@@ -16,29 +16,38 @@ interface RecognitionResult {
     name: string;
     nik: string;
     email: string;
+    phone_number?: string; // Tambahkan jika ada di Laravel
   };
   flask_response?: { // Opsional, mungkin tidak ada jika ada error komunikasi dengan Flask
-    confidence: number;
+    confidence?: number; // Opsional karena bisa saja tidak ada jika wajah tidak cocok
     message: string;
-    name: string;
-    nik: string;
-    status: string;
+    name?: string; // Opsional jika wajah tidak dikenali
+    nik?: string; // Opsional jika wajah tidak dikenali
+    status?: string; // Opsional
   };
   python_error?: any; // Mengganti flask_error_response, karena microservice Python mengirim 'python_error'
   recognized_nik_from_flask?: string; // Opsional, dari kasus "Face recognized, but NIK not found"
   status_code?: number; // Opsional, dari Laravel saat ada error
+  errors?: { [key: string]: string[] }; // Tambahkan ini untuk error validasi dari Laravel
 }
 
 const RecognizePage: React.FC = () => {
   const [showWebcamModal, setShowWebcamModal] = useState<boolean>(false);
-  const [message, setMessage] = useState<Message>({ text: 'Tekan tombol "Mulai Pengenalan Wajah" untuk memulai.', type: 'info' });
+  
+  // Gunakan _setMessage untuk variabel internal, dan setMessage yang di-memoize
+  const [message, _setMessage] = useState<Message>({ text: 'Tekan tombol "Mulai Pengenalan Wajah" untuk memulai.', type: 'info' });
   const [recognitionResult, setRecognitionResult] = useState<RecognitionResult | null>(null);
 
-  // Menggunakan environment variable untuk URL API
-  const LARAVEL_RECOGNIZE_API_URL = `${import.meta.env.REACT_APP_LARAVEL_API_URL}/face-recognize`;
+  // Menggunakan environment variable untuk URL API (VITE_LARAVEL_API_URL)
+  const LARAVEL_RECOGNIZE_API_URL = `${import.meta.env.VITE_LARAVEL_API_URL}/face-recognize`;
 
-  // Callback yang dipanggil dari modal setelah foto diambil
-  const handlePhotoCapturedAndRecognize = async (capturedImageDataUrl: string) => {
+  // Memoize setMessage function
+  const setMessage = useCallback((newMessage: Message) => {
+    _setMessage(newMessage);
+  }, []); // Dependency array kosong: fungsi ini dibuat sekali saja
+
+  // Callback yang dipanggil dari modal setelah foto diambil, di-memoize
+  const handlePhotoCapturedAndRecognize = useCallback(async (capturedImageDataUrl: string) => {
     setMessage({ text: 'Mengirim foto untuk pengenalan...', type: 'info' });
     setRecognitionResult(null); // Reset hasil sebelumnya
 
@@ -46,8 +55,8 @@ const RecognizePage: React.FC = () => {
       const response = await fetch(LARAVEL_RECOGNIZE_API_URL, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
+          "Content-Type": "application/json",
+          "Accept": "application/json",
         },
         body: JSON.stringify({
           image: capturedImageDataUrl,
@@ -59,11 +68,13 @@ const RecognizePage: React.FC = () => {
       if (response.ok) { // Status 200-299 dari Laravel
           setMessage({ text: data.message, type: 'success' });
           setRecognitionResult(data);
-      } else { // Status error dari Laravel (misal 404, 500)
+      } else { // Status error dari Laravel (misal 400, 404, 422, 500)
           let errorMessage = data.message || 'Terjadi kesalahan saat pengenalan.';
 
           // Menyesuaikan penanganan error berdasarkan respons dari Laravel
-          if (data.python_error) { // Error dari Python Microservice (diteruskan oleh Laravel)
+          if (data.errors) { // Jika ada error validasi dari Laravel
+            errorMessage += '\n' + Object.values(data.errors).flat().join('\n');
+          } else if (data.python_error) { // Error dari Python Microservice (diteruskan oleh Laravel)
               errorMessage += `\nDetail Error (Python): ${JSON.stringify(data.python_error)}`;
           } else if (data.flask_response && data.flask_response.message) { // Pesan dari Flask (misal "Face not recognized")
               errorMessage += `\nPesan dari Microservice: ${data.flask_response.message}`;
@@ -79,7 +90,7 @@ const RecognizePage: React.FC = () => {
       setMessage({ text: 'Terjadi kesalahan jaringan atau server tidak merespons.', type: 'error' });
       setRecognitionResult(null); // Reset hasil jika ada error jaringan
     }
-  };
+  }, [setMessage, LARAVEL_RECOGNIZE_API_URL]); // Dependencies: setMessage (memoized) dan URL API
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center py-10 px-4">
@@ -93,7 +104,7 @@ const RecognizePage: React.FC = () => {
           onClick={() => {
             setShowWebcamModal(true);
             setRecognitionResult(null); // Reset hasil saat membuka modal baru
-            setMessage({ text: 'Mulai pengenalan wajah...', type: 'info' });
+            setMessage({ text: 'Mulai pengenalan wajah...', type: 'info' }); // Menggunakan setMessage yang di-memoize
           }}
           className="w-full mb-6 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 transition duration-300 ease-in-out"
         >
@@ -110,19 +121,22 @@ const RecognizePage: React.FC = () => {
                 <p className="text-gray-800 mb-1"><strong>Dikenali sebagai:</strong> {recognitionResult.user_data.name}</p>
                 <p className="text-gray-800 mb-1"><strong>NIK:</strong> {recognitionResult.user_data.nik}</p>
                 <p className="text-gray-800 mb-1"><strong>Email:</strong> {recognitionResult.user_data.email}</p>
-                {recognitionResult.flask_response && (
-                    <p className="text-gray-800"><strong>Kepercayaan:</strong> {recognitionResult.flask_response.confidence?.toFixed(2)}%</p>
+                {recognitionResult.flask_response && typeof recognitionResult.flask_response.confidence === 'number' && (
+                    <p className="text-gray-800"><strong>Kepercayaan:</strong> {recognitionResult.flask_response.confidence.toFixed(2)}%</p>
                 )}
               </>
             ) : (
               <p className="text-red-600 font-medium">Wajah tidak dikenali atau pengguna tidak ditemukan di database Laravel.</p>
             )}
+            {/* Tampilkan pesan dari flask_response jika ada dan ada isinya */}
             {recognitionResult.flask_response && recognitionResult.flask_response.message && (
               <p className="text-gray-600 text-sm mt-2 border-t pt-2">Pesan dari Microservice: {recognitionResult.flask_response.message}</p>
             )}
+            {/* Tampilkan error dari python_error jika ada */}
             {recognitionResult.python_error && (
               <p className="text-red-500 text-sm mt-2 border-t pt-2">Error Detail: {JSON.stringify(recognitionResult.python_error)}</p>
             )}
+            {/* Tampilkan NIK yang dikenali oleh Flask jika tidak ditemukan di Laravel */}
             {recognitionResult.recognized_nik_from_flask && (
               <p className="text-orange-500 text-sm mt-2 border-t pt-2">NIK Dikenali oleh Microservice (tidak ditemukan di Laravel): {recognitionResult.recognized_nik_from_flask}</p>
             )}
@@ -134,8 +148,8 @@ const RecognizePage: React.FC = () => {
       <WebcamCaptureModal
         isOpen={showWebcamModal}
         onClose={() => setShowWebcamModal(false)}
-        onPhotoCaptured={handlePhotoCapturedAndRecognize}
-        setMessage={setMessage}
+        onPhotoCaptured={handlePhotoCapturedAndRecognize} // Menggunakan fungsi yang di-memoize
+        setMessage={setMessage} // Menggunakan fungsi yang di-memoize
       />
     </div>
   );
