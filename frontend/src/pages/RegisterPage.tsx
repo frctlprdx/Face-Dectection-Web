@@ -25,11 +25,6 @@ const RegisterPage: React.FC = () => {
   ]);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number>(0);
 
-  // MENGHAPUS STATE UNTUK INPUT MANUAL DATA DIRI
-  // const [name, setName] = useState<string>("");
-  // const [nik, setNik] = useState<string>("");
-  // const [email, setEmail] = useState<string>("");
-  // const [phoneNumber, setPhoneNumber] = useState<string>("");
 
   // Mengambil informasi pengguna dan token dari AuthContext
   const { user, token } = useAuth(); // <--- Ambil data user dan token dari context
