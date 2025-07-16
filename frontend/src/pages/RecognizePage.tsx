@@ -69,7 +69,7 @@ const RecognizePage: React.FC = () => {
       now.getFullYear(),
       now.getMonth(),
       now.getDate(),
-      16,
+      20,
       0,
       0
     ); // Jam 16:00:00
@@ -168,7 +168,9 @@ const RecognizePage: React.FC = () => {
             navigate("/login");
           } else if (response.status === 403) {
             // Handle NIK mismatch case
-            errorMessage = data.message || "Wajah tidak cocok dengan pengguna yang sedang login.";
+            errorMessage =
+              data.message ||
+              "Wajah tidak cocok dengan pengguna yang sedang login.";
           } else if (data.errors) {
             errorMessage += "\n" + Object.values(data.errors).flat().join("\n");
           } else if (data.python_error) {
@@ -279,7 +281,8 @@ const RecognizePage: React.FC = () => {
             ) : (
               <>
                 <p className="text-red-600 font-medium">
-                  {recognitionResult.message || "Wajah tidak dikenali atau pengguna tidak ditemukan di database Laravel."}
+                  {recognitionResult.message ||
+                    "Wajah tidak dikenali atau pengguna tidak ditemukan di database Laravel."}
                 </p>
                 {/* Show debug information for NIK mismatch */}
                 {recognitionResult.recognized_nik_from_flask && (
@@ -288,15 +291,18 @@ const RecognizePage: React.FC = () => {
                       <strong>Info Debug:</strong>
                     </p>
                     <p className="text-yellow-600 text-sm">
-                      NIK yang dikenali microservice: {recognitionResult.recognized_nik_from_flask}
+                      NIK yang dikenali microservice:{" "}
+                      {recognitionResult.recognized_nik_from_flask}
                     </p>
                     {recognitionResult.authenticated_user_nik && (
                       <p className="text-yellow-600 text-sm">
-                        NIK pengguna yang login: {recognitionResult.authenticated_user_nik}
+                        NIK pengguna yang login:{" "}
+                        {recognitionResult.authenticated_user_nik}
                       </p>
                     )}
                     <p className="text-yellow-600 text-sm mt-1">
-                      Wajah dikenali tetapi bukan milik pengguna yang sedang login.
+                      Wajah dikenali tetapi bukan milik pengguna yang sedang
+                      login.
                     </p>
                   </div>
                 )}

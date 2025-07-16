@@ -34,6 +34,7 @@ class LoginRegisterController extends Controller
             'password' => Hash::make($validatedData['password']),
             'nik' => $validatedData['nik'],
             'phone_number' => $validatedData['phone_number'],
+            'role' => $validatedData['role'],
         ]);
 
         // Opsional: Buat token untuk user yang baru terdaftar dan loginkan otomatis

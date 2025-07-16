@@ -119,7 +119,7 @@ const AuthPage: React.FC = () => {
           password_confirmation: registerPassword,
           nik: registerNIK,
           phone_number: registerPhoneNumber,
-          role: registerRole, // ← tambahkan ini
+          role: registerRole,
         }),
       });
 
@@ -279,19 +279,21 @@ const AuthPage: React.FC = () => {
                     <input
                       type="radio"
                       name="registerRole"
-                      value="Admin"
-                      checked={registerRole === "Admin"}
+                      value="admin" // lowercase
+                      checked={registerRole === "admin"}
                       onChange={(e) => setRegisterRole(e.target.value)}
                       required
                     />
-                    <span className="ml-2">Admin</span>
+                    <span className="ml-2">Admin</span>{" "}
+                    {/* Label tetap kapital */}
                   </label>
+
                   <label className="flex items-center">
                     <input
                       type="radio"
                       name="registerRole"
-                      value="Attendances"
-                      checked={registerRole === "Attendances"}
+                      value="user" // lowercase
+                      checked={registerRole === "user"}
                       onChange={(e) => setRegisterRole(e.target.value)}
                       required
                     />
