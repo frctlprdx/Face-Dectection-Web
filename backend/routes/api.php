@@ -40,6 +40,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Rute untuk mendapatkan daftar user (pertimbangkan apakah ini harus dilindungi atau tidak)
     Route::get('/users', [FaceRecognitionController::class, 'getUsers']);
-
     Route::get('/attendances', [AttendanceController::class, 'index']);
 });
