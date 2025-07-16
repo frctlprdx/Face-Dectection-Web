@@ -19,6 +19,7 @@ class LoginRegisterController extends Controller
                 'password' => 'required|string|min:8|confirmed', // 'confirmed' butuh password_confirmation
                 'nik' => 'required|string|digits:16|unique:users,nik',
                 'phone_number' => 'nullable|string|regex:/^08[0-9]{8,12}$/',
+                'role' => 'required|string|in:admin,user', // Misalnya, hanya admin dan user yang diperbolehkan
             ]);
         } catch (ValidationException $e) {
             return response()->json([

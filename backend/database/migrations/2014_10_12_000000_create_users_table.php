@@ -13,17 +13,12 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id(); // id bigint unsigned, PRIMARY KEY, auto_increment
-
             $table->string('name'); // name varchar(255), NOT NULL
-
             $table->string('email')->unique(); // email varchar(255), NOT NULL, UNIQUE
-
             $table->string('password'); // password varchar(255), NOT NULL
-
             $table->string('nik')->unique(); // nik varchar(255), NOT NULL, UNIQUE
-
             $table->string('phone_number')->nullable(); // phone_number varchar(255), NULLABLE
-
+            $table->string('role');
             $table->rememberToken(); // remember_token varchar(100), NULLABLE
             $table->timestamps(); // created_at timestamp, updated_at timestamp, NULLABLE
         });

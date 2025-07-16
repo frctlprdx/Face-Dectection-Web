@@ -1,6 +1,6 @@
 // src/App.tsx
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext'; // Import AuthProvider dan useAuth
 import AuthPage from './pages/AuthPage'; // Import AuthPage
 import HomePage from './pages/HomePage'; // Halaman tujuan setelah login

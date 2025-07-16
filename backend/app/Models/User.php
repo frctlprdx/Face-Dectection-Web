@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'nik',          // <-- TAMBAHKAN INI
         'phone_number', // <-- TAMBAHKAN INI
+        'role'
         // 'face_embedding', // <-- Tambahkan ini jika Anda memutuskan untuk menyimpan embedding di tabel users juga
     ];
 
